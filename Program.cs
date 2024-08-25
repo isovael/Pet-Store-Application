@@ -7,7 +7,6 @@ using static Pet_Store_Application.Product;
 using static Pet_Store_Application.ProductLogic;
 using static System.Net.Mime.MediaTypeNames;
 
-//comment
 
 
 namespace Pet_Store_Application
@@ -20,12 +19,15 @@ namespace Pet_Store_Application
 
         static void Main()
         {
+;
+
             var productLogic = new ProductLogic();
             //write to console instructions
             Console.WriteLine("Press 1 to add a Cat Food product.");
             Console.WriteLine("Press 2 to view an existing Cat Food product.");
             Console.WriteLine("Press 3 to add a Dog Leash product.");
             Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+            Console.WriteLine("Press 0 to view in-stock products.");
             Console.WriteLine("Type 'exit' to quit");
             //user input variable:
             string userInput = Console.ReadLine();
@@ -39,6 +41,7 @@ namespace Pet_Store_Application
                     //cat food object:
                     CatFood catFood = new CatFood();
                     //user prompt and input lines:
+                    Console.WriteLine("");
                     Console.WriteLine("Please enter the Cat Food name:");
                     catFood.Name = Console.ReadLine();
                     Console.WriteLine("Added " + catFood.Name + " successfully.");
@@ -47,17 +50,20 @@ namespace Pet_Store_Application
                     Console.WriteLine("Added " + catFood.Quantity + " units of " + catFood.Name + " successfully.");
                     //Add Product
                     productLogic.AddProduct(catFood);
+                    Console.WriteLine("");
                     Console.WriteLine("Added item successfully.");
                     //back into the product while statement:
                     Console.WriteLine("Press 1 to add another Cat Food product.");
                     Console.WriteLine("Press 2 to view an existing Cat Food product.");
                     Console.WriteLine("Press 3 to add a Dog Leash product.");
                     Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+                    Console.WriteLine("Press 0 to view in-stock products.");
                     Console.WriteLine("Type 'exit' to quit");
                     userInput = Console.ReadLine();
                 }
                 if (userInput == "2")
                 {
+                    Console.WriteLine("");
                     Console.WriteLine("Please enter a Cat Food name.");
                     userInput= Console.ReadLine();
                     var catFoodReturn = productLogic.GetCatFoodByName(userInput);
@@ -69,10 +75,12 @@ namespace Pet_Store_Application
                     {
                         Console.WriteLine("No product found with that name.");
                     }
+                    Console.WriteLine("");
                     Console.WriteLine("Press 1 to add a Cat Food product.");
                     Console.WriteLine("Press 2 to view another existing Cat Food product.");
                     Console.WriteLine("Press 3 to add a Dog Leash product.");
                     Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+                    Console.WriteLine("Press 0 to view in-stock products.");
                     Console.WriteLine("Type 'exit' to quit");
                     userInput = Console.ReadLine();
                 }
@@ -81,6 +89,7 @@ namespace Pet_Store_Application
                     //dog leash object:
                     DogLeash dogLeash = new DogLeash();
                     //user prompt and input lines:
+                    Console.WriteLine("");
                     Console.WriteLine("Please enter the Dog Leash name:");
                     dogLeash.Name = Console.ReadLine();
                     Console.WriteLine("Added " + dogLeash.Name + " successfully.");
@@ -91,16 +100,19 @@ namespace Pet_Store_Application
                     productLogic.AddProduct(dogLeash);
                     Console.WriteLine("Added item successfully.");
                     //back into the product while statement:
+                    Console.WriteLine("");
                     Console.WriteLine("Press 1 to add a Cat Food product.");
                     Console.WriteLine("Press 2 to view an existing Cat Food product.");
                     Console.WriteLine("Press 3 to add another Dog Leash product.");
                     Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+                    Console.WriteLine("Press 0 to view in-stock products.");
                     Console.WriteLine("Type 'exit' to quit");
                     userInput = Console.ReadLine();
 
                 }
                 if (userInput == "4")
                 {
+                    Console.WriteLine("");
                     Console.WriteLine("Please enter a Dog Leash name.");
                     userInput = Console.ReadLine();
                     var dogLeashesReturn = productLogic.GetDogLeashByName(userInput);
@@ -112,10 +124,30 @@ namespace Pet_Store_Application
                     {
                         Console.WriteLine("No product found with that name.");
                     }
+                    Console.WriteLine("");
                     Console.WriteLine("Press 1 to add a Cat Food product.");
                     Console.WriteLine("Press 2 to view an existing Cat Food product.");
                     Console.WriteLine("Press 3 to add a Dog Leash product.");
                     Console.WriteLine("Press 4 to view another existing Dog Leash product.");
+                    Console.WriteLine("Press 0 to view in-stock products.");
+                    Console.WriteLine("Type 'exit' to quit");
+                    userInput = Console.ReadLine();
+                }
+                if(userInput == "0")
+                {
+                    Console.WriteLine("");
+                    Console.WriteLine("Current In-Stock Products:\n");
+                    //foreach loop to spit out each product in stock name
+                    foreach (var product in productLogic.GetOnlyInStockProducts())
+                    {
+                        Console.WriteLine("\t" + product);
+                    }
+                    Console.WriteLine("");
+                    Console.WriteLine("Press 1 to add a Cat Food product.");
+                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
+                    Console.WriteLine("Press 3 to add a Dog Leash product.");
+                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+                    Console.WriteLine("Press 0 to view in-stock products.");
                     Console.WriteLine("Type 'exit' to quit");
                     userInput = Console.ReadLine();
                 }
@@ -125,7 +157,8 @@ namespace Pet_Store_Application
                     Console.WriteLine("Press 1 to add a Cat Food product.");
                     Console.WriteLine("Press 2 to view an existing Cat Food product.");
                     Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
+                    Console.WriteLine("Press 4 to view an existing Dog Leash product."); 
+                    Console.WriteLine("Press 0 to view in-stock products.");
                     Console.WriteLine("Type 'exit' to quit");
                     userInput = Console.ReadLine();
                 }
@@ -134,6 +167,7 @@ namespace Pet_Store_Application
 
         }
 
+        
 
     }
 }
