@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Pet_Store_Application.ListExtensions;
+
 
 namespace Pet_Store_Application
 {
@@ -59,9 +61,10 @@ namespace Pet_Store_Application
                 return null;
             }
         }
+        //not sure how to get the List extensions from the class to here. 
         public List<string> GetOnlyInStockProducts()
         {
-            return _products.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
+           return _products.InStock();
         }
 
         //product list of cat foods for prefill in-stock products
@@ -70,21 +73,21 @@ namespace Pet_Store_Application
         {
             return new List<Product>()
          {
-           new Product
+           new CatFood
                {
                     Name = "Purina ONE Tender Selects Blend with Real Salmon Dry Cat Food",
                     Price = 23.00m,
                     Description = "This easily digestible adult cat food helps support a microbiome balance in your feline friend and is made with natural prebiotic fiber to promote her gut health and immune support.",
                     Quantity = 15,
                 },
-                new Product
+                new CatFood
                 {
                     Name = "Friskies Seafood Sensations Dry Cat Food",
                     Price = 27.00m,
                     Description = "Loaded with antioxidants to support a healthy immune system plus essential vitamins and minerals for overall well-being.",
                     Quantity = 12,
                 },
-                new Product
+                new CatFood
                 {
                     Name = "Tiki Cat Born Carnivore High Protein Chicken, Herring & Salmon Meal Dry Cat Food",
                     Price = 15.00m,
@@ -92,7 +95,7 @@ namespace Pet_Store_Application
                     Quantity =0,
 
                 },
-                new Product
+                new CatFood
                 {
                     Name = "Meow Mix Original Choice Dry Cat Food",
                     Price = 15.00m,
