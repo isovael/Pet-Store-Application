@@ -1,13 +1,14 @@
 ﻿using System;
+using Pet_Store_Application;
 
 //PetShopApp Excercise 5
 
 public static class ListExtensions
 {
-    public static List<Product> InStock<Product>(this List<T> list)
-    {
-        return _products.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
+    //public static List<Product> InStock<Product>(this List<Product> list)
+    
+        //return _product.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
 
 
     }
-}
+

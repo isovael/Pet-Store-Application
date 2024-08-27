@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Pet_Store_Application.ListExtensions;
 
 
 namespace Pet_Store_Application
@@ -19,9 +18,9 @@ namespace Pet_Store_Application
 
         public ProductLogic()
         {
-            _products = InitProducts();
-            _dogLeashes = new Dictionary<string, DogLeash>();
-            _catFoods = new Dictionary<string, CatFood>();
+             _products = InitProducts();
+             _dogLeashes = new Dictionary<string, DogLeash>();
+             _catFoods = new Dictionary<string, CatFood>();
         }
         public void AddProduct(Product product)
         {
@@ -64,7 +63,8 @@ namespace Pet_Store_Application
         //not sure how to get the List extensions from the class to here. 
         public List<string> GetOnlyInStockProducts()
         {
-           return _products.InStock();
+            //return GetOnlyInStockProducts().InStock();
+            return _products.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
         }
 
         //product list of cat foods for prefill in-stock products
