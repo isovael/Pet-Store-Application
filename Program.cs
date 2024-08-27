@@ -22,15 +22,7 @@ namespace Pet_Store_Application
 ;
 
             var productLogic = new ProductLogic();
-            //write to console instructions
-            Console.WriteLine("Press 1 to add a Cat Food product.");
-            Console.WriteLine("Press 2 to view an existing Cat Food product.");
-            Console.WriteLine("Press 3 to add a Dog Leash product.");
-            Console.WriteLine("Press 4 to view an existing Dog Leash product.");
-            Console.WriteLine("Press 0 to view in-stock products.");
-            Console.WriteLine("Type 'exit' to quit"); 
-            //user input variable:
-            string userInput = Console.ReadLine();
+            var menuOptions = new MenuOptions();
             //while loop:
             while (userInput.ToLower() != "exit")
             {
@@ -52,14 +44,7 @@ namespace Pet_Store_Application
                     productLogic.AddProduct(catFood);
                     Console.WriteLine("");
                     Console.WriteLine("Added item successfully.");
-                    //back into the product while statement:
-                    Console.WriteLine("Press 1 to add another Cat Food product.");
-                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
                 }
                 if (userInput == "2")
                 {
@@ -76,13 +61,7 @@ namespace Pet_Store_Application
                         Console.WriteLine("No product found with that name.");
                     }
                     Console.WriteLine("");
-                    Console.WriteLine("Press 1 to add a Cat Food product.");
-                    Console.WriteLine("Press 2 to view another existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
                 }
                 if(userInput == "3")
                 {
@@ -101,13 +80,7 @@ namespace Pet_Store_Application
                     Console.WriteLine("Added item successfully.");
                     //back into the product while statement:
                     Console.WriteLine("");
-                    Console.WriteLine("Press 1 to add a Cat Food product.");
-                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add another Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
 
                 }
                 if (userInput == "4")
@@ -125,13 +98,7 @@ namespace Pet_Store_Application
                         Console.WriteLine("No product found with that name.");
                     }
                     Console.WriteLine("");
-                    Console.WriteLine("Press 1 to add a Cat Food product.");
-                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view another existing Dog Leash product.");
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
                 }
                 if(userInput == "0")
                 {
@@ -143,24 +110,12 @@ namespace Pet_Store_Application
                         Console.WriteLine("\t" + product);
                     }
                     Console.WriteLine("");
-                    Console.WriteLine("Press 1 to add a Cat Food product.");
-                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product.");
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input.");
-                    Console.WriteLine("Press 1 to add a Cat Food product.");
-                    Console.WriteLine("Press 2 to view an existing Cat Food product.");
-                    Console.WriteLine("Press 3 to add a Dog Leash product.");
-                    Console.WriteLine("Press 4 to view an existing Dog Leash product."); 
-                    Console.WriteLine("Press 0 to view in-stock products.");
-                    Console.WriteLine("Type 'exit' to quit");
-                    userInput = Console.ReadLine();
+                    var menuOptions.MenuOptions();
                 }
 
             }

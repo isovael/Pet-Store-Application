@@ -5,9 +5,9 @@ using Pet_Store_Application;
 
 public static class ListExtensions
 {
-    //public static List<Product> InStock<Product>(this List<Product> list)
+    public static List<Product> InStock<Product>(this List<Product> list)
     
-        //return _product.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
+        return list.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
 
 
     }
