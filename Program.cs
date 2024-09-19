@@ -37,9 +37,7 @@ namespace Pet_Store_Application
         {
            
             var services = CreateServiceCollection();
-      
-           var productLogic = services.GetService<IProductLogic>();
-
+            var productLogic = services.GetService<IProductLogic>();
             var menuOptions = new MenuOptions();
             var userInput = menuOptions.ShowMenuOptions();
 
