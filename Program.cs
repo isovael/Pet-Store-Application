@@ -1,4 +1,5 @@
-﻿using Pet_Store_Application;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Pet_Store_Application;
 using System;
 using System.ComponentModel;
 using System.Text.Json;
@@ -6,6 +7,10 @@ using System.Xml.Linq;
 using static Pet_Store_Application.Product;
 using static Pet_Store_Application.ProductLogic;
 using static System.Net.Mime.MediaTypeNames;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+
 
 
 
@@ -16,13 +21,26 @@ namespace Pet_Store_Application
 
     class Program
     {
-
+        //Class Excercise 7
+        private static IServiceProvider CreateServiceCollection()
+        {
+            return new ServiceCollection()
+            .AddTransient<IProductLogic, ProductLogic>()
+            .BuildServiceProvider();
+            
+            
+        }
+        
         static void Main()
         {
-;
-
-            var productLogic = new ProductLogic();
+           
+            var services = new ServiceCollection();
+      
+            //OLD: var productLogic = new ProductLogic();
+            services.GetService<IProductLogic>;
             var menuOptions = new MenuOptions();
+            var userInput = menuOptions.ShowMenuOptions();
+
             //while loop:
             while (userInput.ToLower() != "exit")
             {
@@ -44,7 +62,7 @@ namespace Pet_Store_Application
                     productLogic.AddProduct(catFood);
                     Console.WriteLine("");
                     Console.WriteLine("Added item successfully.");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
                 }
                 if (userInput == "2")
                 {
@@ -61,7 +79,7 @@ namespace Pet_Store_Application
                         Console.WriteLine("No product found with that name.");
                     }
                     Console.WriteLine("");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
                 }
                 if(userInput == "3")
                 {
@@ -80,7 +98,7 @@ namespace Pet_Store_Application
                     Console.WriteLine("Added item successfully.");
                     //back into the product while statement:
                     Console.WriteLine("");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
 
                 }
                 if (userInput == "4")
@@ -98,7 +116,7 @@ namespace Pet_Store_Application
                         Console.WriteLine("No product found with that name.");
                     }
                     Console.WriteLine("");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
                 }
                 if(userInput == "0")
                 {
@@ -110,12 +128,18 @@ namespace Pet_Store_Application
                         Console.WriteLine("\t" + product);
                     }
                     Console.WriteLine("");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
+                }
+                if(userInput == "9")
+                {
+                    Console.WriteLine("The total value of the current Inventory is: $" + productLogic.GetTotalPriceOfInventory());
+                    userInput = menuOptions.ShowMenuOptions();
+
                 }
                 else
                 {
                     Console.WriteLine("Invalid Input.");
-                    var menuOptions.MenuOptions();
+                    userInput = menuOptions.ShowMenuOptions();
                 }
 
             }

@@ -63,10 +63,14 @@ namespace Pet_Store_Application
         //not sure how to get the List extensions from the class to here. 
         public List<string> GetOnlyInStockProducts()
         {
-            return GetOnlyInStockProducts().InStock();
+            return GetAllProducts().InStock();
             //return _products.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
         }
-
+        //Method for In-Stock Products:
+        public decimal GetTotalPriceOfInventory()
+        {
+            return _products.Where(x => x.Quantity > 0).Sum(x => x.Price*x.Quantity);
+        }
         //product list of cat foods for prefill in-stock products
 
         private List<Product> InitProducts()
