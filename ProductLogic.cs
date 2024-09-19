@@ -60,7 +60,17 @@ namespace Pet_Store_Application
                 return null;
             }
         }
-        //not sure how to get the List extensions from the class to here. 
+      //  public T GetProductByName<T>(string name) where T : Product
+       // {
+          //  try
+       //     {
+        //        return Product typeof (T) as [name];
+         //   }
+        //    catch (Exception ex)
+        //    {
+       //         return null;
+     //       }
+       // }
         public List<string> GetOnlyInStockProducts()
         {
             return GetAllProducts().InStock();

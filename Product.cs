@@ -9,9 +9,9 @@ namespace Pet_Store_Application
 {
     public class Product
     {
-        public string Name;
-        public decimal Price;
-        public int Quantity;
-        public string Description;
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public int Quantity { get; set; }
+        public string Description { get; set; }
     }
 }

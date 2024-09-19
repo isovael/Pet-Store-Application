@@ -9,6 +9,8 @@ using static Pet_Store_Application.ProductLogic;
 using static System.Net.Mime.MediaTypeNames;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using FluentValidation.Results;
+using FluentValidation;
 
 
 
@@ -34,10 +36,10 @@ namespace Pet_Store_Application
         static void Main()
         {
            
-            var services = new ServiceCollection();
+            var services = CreateServiceCollection();
       
-            //OLD: var productLogic = new ProductLogic();
-            services.GetService<IProductLogic>;
+           var productLogic = services.GetService<IProductLogic>();
+
             var menuOptions = new MenuOptions();
             var userInput = menuOptions.ShowMenuOptions();
 
@@ -47,21 +49,33 @@ namespace Pet_Store_Application
 
                 //if add product:
                 if (userInput == "1")
+                //THIS OPTION ONLY TAKES JSON INPUT, FOR TESTING USE: { "Price": 58.89, "Name": "Special dog leash", "Quantity": 23, "Description": "Magical leash that will help your dog not pull hard when going on walks" }
                 {
-                    //cat food object:
-                    CatFood catFood = new CatFood();
                     //user prompt and input lines:
                     Console.WriteLine("");
-                    Console.WriteLine("Please enter the Cat Food name:");
-                    catFood.Name = Console.ReadLine();
-                    Console.WriteLine("Added " + catFood.Name + " successfully.");
-                    Console.WriteLine("Please enter the product Quantity:");
-                    catFood.Quantity = int.Parse(Console.ReadLine());
-                    Console.WriteLine("Added " + catFood.Quantity + " units of " + catFood.Name + " successfully.");
-                    //Add Product
-                    productLogic.AddProduct(catFood);
-                    Console.WriteLine("");
-                    Console.WriteLine("Added item successfully.");
+                    Console.WriteLine("Please enter the Cat Food details:");                    
+                    string jsonString = Console.ReadLine();
+                    CatFood catFood = JsonSerializer.Deserialize<CatFood>(jsonString)!;
+                    ProductValidator validator = new ProductValidator();
+                    ValidationResult result = validator.Validate(catFood);
+                    
+                    if (result.IsValid)
+                    {
+                        Console.WriteLine($"Name: {catFood.Name}");
+                        Console.WriteLine($"Quantity: {catFood.Quantity}");
+                        Console.WriteLine($"Price: {catFood.Price}");
+                        Console.WriteLine($"Description: {catFood.Description}");
+                        productLogic.AddProduct(catFood);
+                        Console.WriteLine("");
+                        Console.WriteLine("Added item successfully.");
+                    }
+                    else
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            Console.WriteLine(error.ErrorMessage);
+                        }
+                    }
                     userInput = menuOptions.ShowMenuOptions();
                 }
                 if (userInput == "2")
