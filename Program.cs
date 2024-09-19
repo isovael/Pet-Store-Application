@@ -47,7 +47,7 @@ namespace Pet_Store_Application
 
                 //if add product:
                 if (userInput == "1")
-                //THIS OPTION ONLY TAKES JSON INPUT, FOR TESTING USE: { "Price": 58.89, "Name": "Special dog leash", "Quantity": 23, "Description": "Magical leash that will help your dog not pull hard when going on walks" }
+                //THIS OPTION ONLY TAKES JSON INPUT, FOR TESTING USE: { "Price": 58.89, "Name": "Special Cat Food", "Quantity": 23, "Description": "Magical Food that will help your Cat not scratch everything." }
                 {
                     //user prompt and input lines:
                     Console.WriteLine("");
