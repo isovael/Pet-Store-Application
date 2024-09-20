@@ -13,5 +13,6 @@ namespace Pet_Store_Application
         public DogLeash GetDogLeashByName(string name);
         public CatFood GetCatFoodByName(string name);
         public List<string> GetOnlyInStockProducts();
+        public decimal GetTotalPriceOfInventory();
     }
 }
