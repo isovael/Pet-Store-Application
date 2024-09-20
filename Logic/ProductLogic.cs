@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FluentValidation;
+using FluentValidation.Results;
+
 
 
 namespace Pet_Store_Application
@@ -24,6 +27,26 @@ namespace Pet_Store_Application
         }
         public void AddProduct(Product product)
         {
+            //Product product = new Product();    
+            ProductValidator validator = new ProductValidator();
+            ValidationResult result = validator.Validate(product);
+            
+            if (result.IsValid)
+            {
+                Console.WriteLine($"Name: {product.Name}");
+                Console.WriteLine($"Quantity: {product.Quantity}");
+                Console.WriteLine($"Price: {product.Price}");
+                Console.WriteLine($"Description: {product.Description}");
+                Console.WriteLine("");
+                Console.WriteLine("Added item successfully.");
+            }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    Console.WriteLine(error.ErrorMessage);
+                }
+            }
             _products.Add(product);
             if (product is DogLeash)
             {

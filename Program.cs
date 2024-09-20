@@ -56,24 +56,24 @@ namespace Pet_Store_Application
                     CatFood catFood = JsonSerializer.Deserialize<CatFood>(jsonString)!;
                     ProductValidator validator = new ProductValidator();
                     ValidationResult result = validator.Validate(catFood);
-                    
-                    if (result.IsValid)
-                    {
-                        Console.WriteLine($"Name: {catFood.Name}");
-                        Console.WriteLine($"Quantity: {catFood.Quantity}");
-                        Console.WriteLine($"Price: {catFood.Price}");
-                        Console.WriteLine($"Description: {catFood.Description}");
-                        productLogic.AddProduct(catFood);
-                        Console.WriteLine("");
-                        Console.WriteLine("Added item successfully.");
-                    }
-                    else
-                    {
-                        foreach (var error in result.Errors)
-                        {
-                            Console.WriteLine(error.ErrorMessage);
-                        }
-                    }
+                    productLogic.AddProduct(catFood);
+                    //if (result.IsValid)
+                    //{
+                    //    Console.WriteLine($"Name: {catFood.Name}");
+                    //    Console.WriteLine($"Quantity: {catFood.Quantity}");
+                    //    Console.WriteLine($"Price: {catFood.Price}");
+                    //    Console.WriteLine($"Description: {catFood.Description}");
+                    //    productLogic.AddProduct(catFood);
+                    //    Console.WriteLine("");
+                    //    Console.WriteLine("Added item successfully.");
+                    //}
+                    //else
+                    //{
+                    //    foreach (var error in result.Errors)
+                    //    {
+                    //        Console.WriteLine(error.ErrorMessage);
+                    //    }
+                    //}
                     userInput = menuOptions.ShowMenuOptions();
                 }
                 if (userInput == "2")
