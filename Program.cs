@@ -23,7 +23,6 @@ namespace Pet_Store_Application
 
     class Program
     {
-        //Class Excercise 7
         private static IServiceProvider CreateServiceCollection()
         {
             return new ServiceCollection()
@@ -41,11 +40,11 @@ namespace Pet_Store_Application
             var menuOptions = new MenuOptions();
             var userInput = menuOptions.ShowMenuOptions();
 
-            //while loop:
+          
             while (userInput.ToLower() != "exit")
             {
 
-                //if add product:
+                
                 if (userInput == "1")
                 //THIS OPTION ONLY TAKES JSON INPUT, FOR TESTING USE: { "Price": 58.89, "Name": "Special Cat Food", "Quantity": 23, "Description": "Magical Food that will help your Cat not scratch everything." }
                 {
@@ -57,23 +56,6 @@ namespace Pet_Store_Application
                     ProductValidator validator = new ProductValidator();
                     ValidationResult result = validator.Validate(catFood);
                     productLogic.AddProduct(catFood);
-                    //if (result.IsValid)
-                    //{
-                    //    Console.WriteLine($"Name: {catFood.Name}");
-                    //    Console.WriteLine($"Quantity: {catFood.Quantity}");
-                    //    Console.WriteLine($"Price: {catFood.Price}");
-                    //    Console.WriteLine($"Description: {catFood.Description}");
-                    //    productLogic.AddProduct(catFood);
-                    //    Console.WriteLine("");
-                    //    Console.WriteLine("Added item successfully.");
-                    //}
-                    //else
-                    //{
-                    //    foreach (var error in result.Errors)
-                    //    {
-                    //        Console.WriteLine(error.ErrorMessage);
-                    //    }
-                    //}
                     userInput = menuOptions.ShowMenuOptions();
                 }
                 if (userInput == "2")

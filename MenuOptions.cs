@@ -17,7 +17,6 @@ namespace Pet_Store_Application
             Console.WriteLine("Press 9 to view the value of all in stock products.");
             Console.WriteLine("Press 0 to view in-stock products.");
             Console.WriteLine("Type 'exit' to quit");
-            //user input variable:
             string userInput = Console.ReadLine();
             return userInput;
         }    

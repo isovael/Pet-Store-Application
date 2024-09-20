@@ -83,28 +83,17 @@ namespace Pet_Store_Application
                 return null;
             }
         }
-      //  public T GetProductByName<T>(string name) where T : Product
-       // {
-          //  try
-       //     {
-        //        return Product typeof (T) as [name];
-         //   }
-        //    catch (Exception ex)
-        //    {
-       //         return null;
-     //       }
-       // }
+      
         public List<string> GetOnlyInStockProducts()
         {
             return GetAllProducts().InStock();
-            //return _products.Where(x => x.Quantity > 0).Select(x => x.Name).ToList();
+            
         }
-        //Method for In-Stock Products:
+        
         public decimal GetTotalPriceOfInventory()
         {
             return _products.Where(x => x.Quantity > 0).Sum(x => x.Price*x.Quantity);
         }
-        //product list of cat foods for prefill in-stock products
 
         private List<Product> InitProducts()
         {
